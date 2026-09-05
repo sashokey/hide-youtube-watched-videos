@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hide YouTube Watched Videos
 // @namespace    local.hide-youtube-watched-videos
-// @version      1.1.10
+// @version      1.1.11
 // @description  Hides videos with any positive watch progress on YouTube Home and channel pages.
 // @match        https://www.youtube.com/*
 // @exclude      https://www.youtube.com/embed/*
@@ -120,7 +120,6 @@
     for (const host of [root, ...root.querySelectorAll(progressHosts)]) {
       if (host.matches(progressHosts)) {
         const connected = page.contains(host);
-        // Empty attributeFilter silences detached hosts; MutationObserver has no unobserve.
         observer.observe(host, connected ? progressOptions : silentOptions);
         if (connected) updateProgress(host);
       }

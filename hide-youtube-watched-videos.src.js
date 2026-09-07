@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hide YouTube Watched Videos
 // @namespace    local.hide-youtube-watched-videos
-// @version      1.1.11
+// @version      1.1.12
 // @description  Hides videos with any positive watch progress on YouTube Home and channel pages.
 // @match        https://www.youtube.com/*
 // @exclude      https://www.youtube.com/embed/*
@@ -34,7 +34,7 @@
   let showWatched = Boolean(GM_getValue(stateKey, false));
   let page = null;
   let openMenu = null;
-  const filterStyle = GM_addStyle(`ytd-browse[${active}]:not([hidden]) :is(${cards}):not(ytd-playlist-video-list-renderer *,ytd-playlist-panel-renderer *):has(:is(${watchedMarker}):not([${zero}])){display:none!important}`);
+  const filterStyle = GM_addStyle(`ytd-browse[${active}]:not([hidden]) :is(${cards}):not(:hover,:focus-within,:active):not(ytd-playlist-video-list-renderer *,ytd-playlist-panel-renderer *):has(:is(${watchedMarker}):not([${zero}])){display:none!important}`);
   filterStyle.disabled = true;
 
   GM_addStyle(`
